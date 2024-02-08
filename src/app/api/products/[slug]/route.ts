@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
 import data from '../data.json'
 import { z } from 'zod'
 
@@ -13,9 +13,7 @@ export async function GET(
   const product = data.products.find((product) => product.slug === slug)
 
   if (!product) {
-    return new NextResponse(null, {
-      status: 400,
-    })
+    return Response.json({ message: 'Product Not Found' }, { status: 400 })
   }
 
   return Response.json(product)
