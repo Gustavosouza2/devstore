@@ -33,8 +33,8 @@ export default async function Home() {
         <Image
           src={highlightedProduct.image}
           className="group-hover:scale-105 transition-transform duration-500"
-          width={480}
-          height={480}
+          width={880}
+          height={880}
           quality={100}
           alt=""
         />
@@ -59,8 +59,8 @@ export default async function Home() {
         <Image
           src={mediumProduct.image}
           className="group-hover:scale-105 transition-transform duration-500"
-          width={860}
-          height={860}
+          width={400}
+          height={400}
           quality={100}
           alt=""
         />
@@ -85,8 +85,8 @@ export default async function Home() {
         <Image
           src={lowProduct.image}
           className="group-hover:scale-105 transition-transform duration-500"
-          width={860}
-          height={860}
+          width={400}
+          height={400}
           quality={100}
           alt=""
         />
