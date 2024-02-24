@@ -21,7 +21,8 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const [highlightedProduct, ...otherProducts] = await getFeaturedProducts()
+  const [highlightedProduct, mediumProduct, lowProduct] =
+    await getFeaturedProducts()
 
   return (
     <div className="grid max-h-[860px] grid-cols-9 grid-rows-6 gap-6">
@@ -32,8 +33,8 @@ export default async function Home() {
         <Image
           src={highlightedProduct.image}
           className="group-hover:scale-105 transition-transform duration-500"
-          width={920}
-          height={920}
+          width={480}
+          height={480}
           quality={100}
           alt=""
         />
@@ -50,33 +51,57 @@ export default async function Home() {
         </div>
       </Link>
 
-      {otherProducts.map((product) => (
-        <Link
-          key={product.id}
-          className="group relative col-span-3 row-span-3 rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-end"
-          href="/"
-        >
-          <Image
-            src={product.image}
-            className="group-hover:scale-105 transition-transform duration-500"
-            width={860}
-            height={860}
-            quality={100}
-            alt=""
-          />
-          <div className="absolute bottom-10 right-10 h-12 flex items-center gap-2 max-w-[280px] rounded-full border-2 border-zinc-500 bg-black/60 p-1 pl-5">
-            <span className="text-sm truncate">{product.title}</span>
-            <span className="flex h-full items-center justify-center rounded-full bg-violet-500 px-4 font-semibold">
-              {highlightedProduct.price.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0,
-              })}
-            </span>
-          </div>
-        </Link>
-      ))}
+      <Link
+        key={mediumProduct.id}
+        className="group relative col-span-3 row-span-3 rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-end"
+        href={`/product/${mediumProduct.slug}`}
+      >
+        <Image
+          src={mediumProduct.image}
+          className="group-hover:scale-105 transition-transform duration-500"
+          width={860}
+          height={860}
+          quality={100}
+          alt=""
+        />
+        <div className="absolute bottom-10 right-10 h-12 flex items-center gap-2 max-w-[280px] rounded-full border-2 border-zinc-500 bg-black/60 p-1 pl-5">
+          <span className="text-sm truncate">{mediumProduct.title}</span>
+          <span className="flex h-full items-center justify-center rounded-full bg-violet-500 px-4 font-semibold">
+            {mediumProduct.price.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            })}
+          </span>
+        </div>
+      </Link>
+
+      <Link
+        key={lowProduct.id}
+        className="group relative col-span-3 row-span-3 rounded-lg bg-zinc-900 overflow-hidden flex justify-center items-end"
+        href={`/product/${lowProduct.slug}`}
+      >
+        <Image
+          src={lowProduct.image}
+          className="group-hover:scale-105 transition-transform duration-500"
+          width={860}
+          height={860}
+          quality={100}
+          alt=""
+        />
+        <div className="absolute bottom-10 right-10 h-12 flex items-center gap-2 max-w-[280px] rounded-full border-2 border-zinc-500 bg-black/60 p-1 pl-5">
+          <span className="text-sm truncate">{lowProduct.title}</span>
+          <span className="flex h-full items-center justify-center rounded-full bg-violet-500 px-4 font-semibold">
+            {lowProduct.price.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
+            })}
+          </span>
+        </div>
+      </Link>
     </div>
   )
 }
